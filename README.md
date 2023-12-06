@@ -1,2 +1,2 @@
 # Websight
-Websight is a webinar application that is an open platform for all ages to heighten their passion. 
+Following the COVID-19 pandemic, seminars, meetings and conferences are necessary for updating our knowledge and skills. Webinars are the solutions to this issue. Websight is a webinar application that is an open platform for all ages to heighten their passion. The website opens up to an illustrated landing page giving a gist of the insides of the website. Signing up or logging in will direct you to the home page that consists of recommendations the website provides and categories to explore and attend webinars of one's interest. Websight also provides an option to post webinars in various categories. 
