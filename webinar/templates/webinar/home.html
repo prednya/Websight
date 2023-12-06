@@ -1,0 +1,195 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Webinar/home.css' %}">
+  <title>Home</title
+</head>
+  <script>
+    function toggleMenu() {
+      var list = document.getElementsByClassName("toggle-menu");
+      for(var i = 0; i < list.length; i++){
+        list[i].classList.toggle("menu-close")
+      }
+    }
+  </script>
+  <div class="menu-container menu-close toggle-menu">
+  
+    <div class="menu-wrapper menu-close toggle-menu">
+      <div class="menu-heading">
+        <h3>Menu</h3>
+        
+        <div class="filler"></div>
+        <div id="menu-toggle-button" class="toggle-menu menu-toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-minus-square"></i>
+          
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+      <a class="redirects" href="{% url 'webinar-home' %} ">
+        <div class="menu-item">
+          <i class="fas fa-home menu-icon"></i>
+          <div class="menu-item-text">Home</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'categories' %} ">
+        <div class="menu-item">
+          <i class="fas fa-clone menu-icon"></i>
+          <div class="menu-item-text">Categories</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'post-create' %} ">
+        <div class="menu-item">
+          <i class="fas fa-plus-square menu-icon"></i>
+          <div class="menu-item-text">Create Post</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'profile' %}">
+        <div class="menu-item">
+          <i class="fas fa-user-alt menu-icon"></i>
+          <div class="menu-item-text">Profile</div>
+        </div>
+      </a>
+        <a class="redirects" href="{% url 'settings' %}">
+          <div class="menu-item"> 
+            <i class="fas fa-cogs menu-icon"></i>
+            <div class="menu-item-text">Settings</div>
+          </div>
+        </a>
+        <a class="redirects" href="{% url 'logout' %}">
+          <div class="menu-item" >
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+          <div class="menu-item-text" >Logout</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container menu-close toggle-menu">
+    <div class="main-wrapper menu-close toggle-menu">
+      <div class="main-header-menu">
+      
+        <div id="toggle-button" class="toggle-menu toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-bars" id="toggle-button" onclick="toggleMenu()"></i>
+          <h3>Menu</h3>
+        </div>
+        
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+      </div>
+      <div class="main-wrapper-inside">
+       <div id="demo" class="carousel slide carousel-fade" data-ride="carousel" data-interval="2000">
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0"  class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{% static 'webinar/media/illustration1.svg' %}">
+              <div class="carousel-caption">
+              </div>    
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'webinar/media/illustration2.svg' %}" alt="">
+              <div class="carousel-caption">
+              </div>  
+            </div>
+            <div class="carousel-item">
+              <img src="{% static 'webinar/media/illustration3.svg' %}" alt="">
+              <div class="carousel-caption">
+              </div>  
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <div class="deck">
+          <div class="deck-header">
+            <a href="#" class="btn attend-btn">RECOMMENDATIONS</a>
+          </div>  
+          <div class="card-deck">
+            {% for post in posts %}
+            <div class="card">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}" alt="Card image" >
+              <div class="card-body">
+                <h4 class="card-title">{{post.title}}</h4>
+                <p class="card-text-host-name">{{post.hostName.first_name}} {{post.hostName.last_name}}</p>
+                <p class="card-text-host-name"><b>{{post.category}}</b></p>
+                <p class="card-text-desc">{{post.description}}</p>
+                <p class="card-text-date mt-9">{{post.duration}}</p>
+                <p class="card-text-date mt-10">on {{post.date}} {{post.time}}</p>
+                <a href="{% url 'post-detail' post.id%}" class="btn attend-btn" style="margin-left:30%;width:100px;margin-top:20px;">View</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="deck categories">
+          <div class="deck-header">
+            <a href="{% url 'categories' %}" class="btn attend-btn">CATEGORIES</a>
+        </div>
+          <div class="card-deck">
+            <div class="card card-cat">
+              <a href="{% url 'art' %}" class="custom-card embed-responsive embed-responsive-4by3">
+                <img class="card-img-top embed-responsive-item" src="{% static 'webinar/media/ART.jpg' %}" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">Art</h4>
+                </div>
+              </a>
+            </div>
+            <div class="card card-cat">
+              <a href="{% url 'cooking' %}" class="custom-card embed-responsive embed-responsive-4by3">
+                <img class="card-img-top embed-responsive-item" src="{% static 'webinar/media/COOKING.jpg' %}" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">Cooking</h4>
+                </div>
+              </a>
+            </div>
+            <div class="card card-cat">
+              <a href="{% url 'photography' %}" class="custom-card embed-responsive embed-responsive-4by3">
+                <img class="card-img-top embed-responsive-item" src="{% static 'webinar/media/PHOTOGRAPHY.jpg' %}" alt="Card image">
+                <div class="card-img-overlay">
+                  <h4 class="card-title">Photography</h4>
+                </div>
+              </a>
+            </div>
+            <div class="card card-cat">
+              <a href="{% url 'technology' %}" class="custom-card embed-responsive embed-responsive-4by3">
+                <img class="card-img-top embed-responsive-item" src="{% static 'webinar/media/TECHNOLOGY.jpg' %}" alt="Card image">
+                <div class="card-img-overlay ">
+                  <h4 class="card-title">Technology</h4>
+                </div>
+              </a>
+            </div>
+
+
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

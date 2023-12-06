@@ -1,0 +1,173 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Webinar/post_template.css' %}">
+  <title>Home</title
+</head>
+  <script>
+    function toggleMenu() {
+      var list = document.getElementsByClassName("toggle-menu");
+      for(var i = 0; i < list.length; i++){
+        list[i].classList.toggle("menu-close")
+      }
+    }
+  </script>
+  <div class="menu-container menu-close toggle-menu">
+  
+    <div class="menu-wrapper menu-close toggle-menu">
+      <div class="menu-heading">
+        <h3>Menu</h3>
+        
+        <div class="filler"></div>
+        <div id="menu-toggle-button" class="toggle-menu menu-toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-minus-square"></i>
+          
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+      <a class="redirects" href="{% url 'webinar-home' %} ">
+        <div class="menu-item">
+          <i class="fas fa-home menu-icon"></i>
+          <div class="menu-item-text">Home</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'categories' %} ">
+        <div class="menu-item">
+          <i class="fas fa-clone menu-icon"></i>
+          <div class="menu-item-text">Categories</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'post-create' %} ">
+        <div class="menu-item">
+          <i class="fas fa-plus-square menu-icon"></i>
+          <div class="menu-item-text">Create Post</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'profile' %}">
+        <div class="menu-item">
+          <i class="fas fa-user-alt menu-icon"></i>
+          <div class="menu-item-text">Profile</div>
+        </div>
+      </a>
+        <a class="redirects" href="{% url 'settings' %}">
+          <div class="menu-item"> 
+            <i class="fas fa-cogs menu-icon"></i>
+            <div class="menu-item-text">Settings</div>
+          </div>
+        </a>
+        <a class="redirects" href="{% url 'logout' %}">
+          <div class="menu-item" >
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+          <div class="menu-item-text" >Logout</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container menu-close toggle-menu">
+    <div class="main-wrapper menu-close toggle-menu">
+      <div class="main-header-menu">
+      
+        <div id="toggle-button" class="toggle-menu toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-bars" id="toggle-button" onclick="toggleMenu()"></i>
+          <h3>Menu</h3>
+        </div>
+      </div>
+      <div class="main-wrapper-inside">
+        
+        <div class="card">
+            <h2  style="color:white">Post your Webinar</h2>
+            <hr color="white" >
+            <form method="POST">
+            {% csrf_token %}
+            
+            <div class="row">
+                <div class="col-sm left">
+                    <label for="name"><h5 class="label"  style="color:white">Title</h5></label>
+                    <div class="input-group form-group">
+                        <input type="text" class="form-control" placeholder="Enter Name of the Webinar" id="title" name="title">
+                    </div>
+                    <label for="name"><h5 class="label"  style="color:white">Brief Description</h5></label>
+                    <div class="input-group form-group">
+                        {% comment %} <input type="text" class="form-control"  style="height:15vh" placeholder="Enter a brief description" name="description" id="description"> {% endcomment %}
+                        <textarea type="text" class="form-control"  style="height:13vh" placeholder="Enter a brief description" name="description" id="description"></textarea>
+                    </div>
+                    <label for="subject"><h5 class="label"  style="color:white">Details</h5></label>
+                    <div class="input-group form-group">
+                        {% comment %} <input type="text" class="form-control"  style="height:15vh" placeholder="Enter the details of the webinar" name="details" id="details"> {% endcomment %}
+                        <textarea type="text" class="form-control"  style="height:13vh" placeholder="Enter the details of the webinar" name="details" id="details"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm right">
+                    <label for="category"><h5 class="label"  style="color:white">Category</h5></label>
+                    <div class="form-group">
+                        <select class="form-control" id="category" placeholder="Select Category" name="category">
+                            <option value="Architecture">Architecture</option>
+                            <option value="Art">Art</option>
+                            <option value="Business">Business</option>
+                            <option value="Content Writing">Content Writing</option>
+                            <option value="Cooking">Cooking</option>
+                            <option value="Dance">Dance</option>
+                            <option value="Gardening">Gardening</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Technology">Technology</option>
+                        </select>
+                    </div>
+                    <label for="subject"><h5 class="label"  style="color:white">Date and Time</h5></label><br>
+                    <div class="form-check form-check-inline">
+                        <div class="form-group">
+                            <div >
+                                <input type="date" style="width:220px;" class="form-control" name="date" id="date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="time" style="width:220px; margin-left:10px;" class="form-control" name="time" id="time">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <label for="name"><h5 class="label" style="color:white">Duration</h5></label>
+                    <div class="input-group form-group">
+                        <input type="text" class="form-control" placeholder="Enter duration (example:2 hours)" id="duration" name="duration">
+                    </div>
+                    <label for="name"><h5 class="label"  style="color:white">Webinar Link/URL</h5></label>
+                    <div class="input-group form-group">
+                        <input type="text" class="form-control" placeholder="Enter URL/Link of the Webinar" name="link" id="link">
+                    </div>
+                </div>
+                </div>
+                <div class="form-group button" style="margin-left:44%">
+                    <button type="submit" class="btn confirm-btn"> Post Webinar</button>
+                </div>
+               
+            </form>
+            <div class="form-group button"  style="margin-left:47%">
+                    <a href="{% url 'webinar-home' %}"><button value="Back" class="btn back-btn" >Back</button></a>
+                </div>
+            </div>
+     {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}
+

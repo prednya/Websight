@@ -1,0 +1,52 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body style="background-image: url({% static 'webinar/media/landingIllustration.svg' %});">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'webinar/landing.css' %}">
+    <title>Welcome</title>
+</head>
+<div class="menu">
+    <a href="{% url 'login' %}">    
+        <div class="btn login-btn">
+           <h3 style="margin-top:11px">Login</h3>
+        </div>
+    </a>
+    <a href="{% url 'signup' %}">    
+        <div class="btn signup-btn">
+            <h3 style="margin-top:11px">Sign up</h3>
+        </div>
+    </a>
+</div>
+<div class="text-box-1" data-aos="fade-left">
+    <div class="sub-content">
+        <p>Invigorate the learner within...<br>Learn from the best of the best<br>to create a journey of your own</p>
+    </div>
+</div>
+<div class="text-box-2" data-aos="fade-right">
+    <div class="headings">LEARN FROM THE<br>EXPERIENCED</div>
+    <div class="sub-content">Professionals - The best<br>in their fields</div>
+</div>
+<div class="text-box-3" data-aos="fade-left">
+    <div class="headings">SHADES OF JOURNEYS</div>
+    <div class="sub-content">A journey of a<br>thousand miles begins<br>with a single step</div>
+</div>
+<div class="text-box-4" data-aos="fade-right">
+    <div class="headings">GET INSPIRED</div>
+    <div class="sub-content">To infinity<br>and beyond!</div>
+</div>
+<div class="text-box-5" data-aos="fade-up">
+    <div class="headings">EXPLORE.ATTEND.INNOVATE</div>
+</div>
+
+<div class="end"></div>
+</body>
+<script>
+    AOS.init();
+</script>
+
+{% endblock %}

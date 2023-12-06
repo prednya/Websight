@@ -1,0 +1,37 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+    <head>
+        <title>WEBSIGHT</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'webinar/landing.css' %}">
+    </head>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="{% static 'webinar/media/landing.svg' %}">
+        </div>
+        <div class="d-flex justify-content-center h-100">
+            <div class="title">
+                WEBSIGHT
+            </div>
+            <div class="intro-para">
+                Hola! Yo empecé aprendo Español hace dos mes en la escuela. Yo voy la universidad. Yo tratar estudioso Español tres hora todos los días para que yo saco mejor rápido. ¿Cosa algún yo debo hacer además construir mí vocabulario? Muchas veces yo estudioso la palabras solo para que yo construir mí voabulario rápido. Yo quiero empiezo leo el periódico Español la próxima semana. Por favor correcto algún la equivocaciónes yo hisciste. Gracias
+            </div>
+            <div class="buttons">
+                <a href="{% url 'signup' %}">
+                    <div class="btn">
+                        Sign up
+                    </div>
+                </a>
+                <a href="{% url 'login' %}">
+                    <div class="btn">
+                        Login
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow-x: hidden;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.login-btn{
+    position: relative;
+    top:30px;
+    right:150px;
+    cursor: pointer;
+    font-family: 'Overpass', sans-serif;
+}
+
+.signup-btn{
+    position: relative;
+    top:30px;
+    right:100px;
+    cursor: pointer;
+    font-family: 'Overpass', sans-serif;
+}
+
+.btn {
+    width: 130px;
+    color: #ffffff !important;
+    background:#899B9F;
+    /* #899B9F bg color of img 
+       #72898d another button color */
+    justify-content: center;
+}
+  
+.btn:hover {
+    background: #697e83;
+    text-decoration: none;
+    box-shadow: 3px 3px 5px #6f7e81;
+
+}
+
+.end{
+    margin-top:1010px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.headings{
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size:3.5vw;
+    text-align: center;
+}
+
+.sub-content{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size:2.2vw;
+    text-align: center;
+}
+
+
+.text-box-1{
+    position: relative;
+    margin-top: 900px;
+    margin-left:900px;
+}
+
+.text-box-2{
+    position: relative;
+    margin-top: 550px;
+    margin-right:900px;
+}
+
+.text-box-3{
+    position: relative;
+    margin-top: 650px;
+    margin-left:800px;
+}
+
+.text-box-4{
+    position: relative;
+    margin-top: 675px;
+    margin-right:900px;
+}
+
+.text-box-5{
+    position: absolute;
+    margin-top: 350px;
+    margin-left: 420px;
+}

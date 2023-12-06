@@ -1,0 +1,143 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Webinar/categories.css' %}">
+  <title>Home</title
+</head>
+  <script>
+    function toggleMenu() {
+      var list = document.getElementsByClassName("toggle-menu");
+      for(var i = 0; i < list.length; i++){
+        list[i].classList.toggle("menu-close")
+      }
+    }
+  </script>
+  <div class="menu-container menu-close toggle-menu">
+  
+    <div class="menu-wrapper menu-close toggle-menu">
+      <div class="menu-heading">
+        <h3>Menu</h3>
+        
+        <div class="filler"></div>
+        <div id="menu-toggle-button" class="toggle-menu menu-toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-minus-square"></i>
+          
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+      <a class="redirects" href="{% url 'webinar-home' %} ">
+        <div class="menu-item">
+          <i class="fas fa-home menu-icon"></i>
+          <div class="menu-item-text">Home</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'categories' %} ">
+        <div class="menu-item">
+          <i class="fas fa-clone menu-icon"></i>
+          <div class="menu-item-text">Categories</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'post-create' %} ">
+        <div class="menu-item">
+          <i class="fas fa-plus-square menu-icon"></i>
+          <div class="menu-item-text">Create Post</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'profile' %}">
+        <div class="menu-item">
+          <i class="fas fa-user-alt menu-icon"></i>
+          <div class="menu-item-text">Profile</div>
+        </div>
+      </a>
+        <a class="redirects" href="{% url 'settings' %}">
+          <div class="menu-item"> 
+            <i class="fas fa-cogs menu-icon"></i>
+            <div class="menu-item-text">Settings</div>
+          </div>
+        </a>
+        <a class="redirects" href="{% url 'logout' %}">
+          <div class="menu-item" >
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+          <div class="menu-item-text" >Logout</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container menu-close toggle-menu">
+    <div class="main-wrapper menu-close toggle-menu">
+      <div class="main-header-menu">
+      
+        <div id="toggle-button" class="toggle-menu toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-bars" id="toggle-button" onclick="toggleMenu()"></i>
+          <h3>Menu</h3>
+        </div>
+      </div>
+      <div class="main-wrapper-inside">
+       
+        <div class="deck">
+          <div class="deck-header">
+            <a href="#" class="btn attend-btn">PHOTOGRAPHY</a>
+          </div>  
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Types of photography</h4>
+                <p class="card-text-host-name">Mandeep Singh</p>
+                <p class="card-text-desc">Learn Product,Portrait and many more types with Mandeep</p>
+                <p class="card-text-date mt-9">2 hours</p>
+                <p class="card-text-date mt-10">on 13th July, 2021 7:00 p.m.</p>
+                <a href="#" class="btn attend-btn">view</a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Basics of Photography</h4>
+                <p class="card-text-host-name">Mataeo Alejandro</p>
+                <p class="card-text-desc">Exploring the basics of lighting, aperture, focal length, shutter speed, ISO and many more</p>
+                <p class="card-text-date mt-9">1 hour</p>
+                <p class="card-text-date mt-10">on 17th July, 2021 11:15 a.m.</p>
+                <a href="#" class="btn attend-btn">view</a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Understanding Composition</h4>
+                <p class="card-text-host-name">Lucas Duncan</p>
+                <p class="card-text-desc">Learning to understand a viewer's reaction to the relationship between the proportion and weight of objects placed in your photos.</p>
+                <p class="card-text-date mt-9">1 hour</p>
+                <p class="card-text-date mt-10">on 29th July, 2021 9:00 a.m.</p>
+                <a href="#" class="btn attend-btn">view</a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">Capturing motion in photos</h4>
+                <p class="card-text-host-name">Harish Mehta</p>
+                <p class="card-text-desc">learn the use of motion blur and subject placement to capture movement and action. </p>
+                <p class="card-text-date mt-9">1 hour 30 minutes</p>
+                <p class="card-text-date mt-10">on 7th August, 2021 1:00 p.m.</p>
+                <a href="#" class="btn attend-btn">view</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+        <div class="extra" style="margin-top:40px;"></div>
+        
+        
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

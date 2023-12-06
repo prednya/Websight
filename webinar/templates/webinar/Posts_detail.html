@@ -1,0 +1,123 @@
+{% extends "webinar/base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Webinar/post_view.css' %}">
+  <title>Home</title
+</head>
+  <script>
+    function toggleMenu() {
+      var list = document.getElementsByClassName("toggle-menu");
+      for(var i = 0; i < list.length; i++){
+        list[i].classList.toggle("menu-close")
+      }
+    }
+  </script>
+  <div class="menu-container menu-close toggle-menu">
+  
+    <div class="menu-wrapper menu-close toggle-menu">
+      <div class="menu-heading">
+        <h3>Menu</h3>
+        
+        <div class="filler"></div>
+        <div id="menu-toggle-button" class="toggle-menu menu-toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-minus-square"></i>
+          
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+      <a class="redirects" href="{% url 'webinar-home' %} ">
+        <div class="menu-item">
+          <i class="fas fa-home menu-icon"></i>
+          <div class="menu-item-text">Home</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'categories' %} ">
+        <div class="menu-item">
+          <i class="fas fa-clone menu-icon"></i>
+          <div class="menu-item-text">Categories</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'post-create' %} ">
+        <div class="menu-item">
+          <i class="fas fa-plus-square menu-icon"></i>
+          <div class="menu-item-text">Create Post</div>
+        </div>
+      </a>
+      <a class="redirects" href="{% url 'profile' %}">
+        <div class="menu-item">
+          <i class="fas fa-user-alt menu-icon"></i>
+          <div class="menu-item-text">Profile</div>
+        </div>
+      </a>
+        <a class="redirects" href="{% url 'settings' %}">
+          <div class="menu-item"> 
+            <i class="fas fa-cogs menu-icon"></i>
+            <div class="menu-item-text">Settings</div>
+          </div>
+        </a>
+        <a class="redirects" href="{% url 'logout' %}">
+          <div class="menu-item" >
+            <i class="fas fa-sign-out-alt menu-icon"></i>
+          <div class="menu-item-text" >Logout</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="main-container menu-close toggle-menu">
+    <div class="main-wrapper menu-close toggle-menu">
+      <div class="main-header-menu">
+      
+        <div id="toggle-button" class="toggle-menu toggle-btn menu-close" onclick="toggleMenu()">
+          <i class="fas fa-bars" id="toggle-button" onclick="toggleMenu()"></i>
+          <h3>Menu</h3>
+        </div>
+        
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+      </div>
+      <div class="main-wrapper-inside">
+        <div class="deck">
+          <div class="card-deck">
+            <div class="card" style="align-items:center">
+              <img class="card-img-top" src="{% static 'webinar/media/base.svg' %}">
+              <div class="card-body">
+                <h4 class="card-title">{{object.title}}</h4>
+                <p class="card-text-host-name">by {{object.hostName}}</p>
+                <p class="card-text-desc" style="font-size:24px">{{object.description}}</p>
+                <p class="card-text-desc">{{object.details}}</p>
+                <p class="card-text-date mt-9">on {{object.date}}</p>
+                <p class="card-text-date mt-9">at {{object.time}}</p>
+                <p class="card-text-desc">Duration {{object.duration}}</p>
+                <div class="buttons">
+                  <a href="#" class="btn btn-outline-success">Enroll</a>
+                  {% if object.hostName == user %}
+                  <a href="{% url 'post-update' object.id %}" class="btn btn-outline-secondary">Update Post</a>
+                  <a href="{% url 'post-delete' object.id %}" class="btn btn-outline-danger">Delete Post</a>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}
